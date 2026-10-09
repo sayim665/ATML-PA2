@@ -55,15 +55,39 @@ def to_device(batch, device):
     return {k: v.to(device) for k, v in batch.items()}
 
 
+MIN_RESPONSE_TOKENS = 64
+
+
+def filter_long_prompts(rows, tokenizer, max_length, min_response=MIN_RESPONSE_TOKENS):
+    """Drop pairs whose prompt leaves fewer than `min_response` tokens for the response."""
+    kept, dropped = [], []
+    for i, row in enumerate(rows):
+        n = len(tokenizer.apply_chat_template(
+            prompt_messages_from_preference(row), tokenize=True, add_generation_prompt=True))
+        if n > max_length - min_response:
+            dropped.append({"index": i, "id": row.get("prompt_id", row.get("id")), "prompt_tokens": n})
+        else:
+            kept.append(row)
+    return kept, dropped
+
+
 def prepare_dpo_run(config_path: str, dataset_path: str | None = None, beta: float | None = None, max_examples: int | None = None):
     cfg = load_yaml(config_path)
     set_seed(int(cfg["seed"]))
     path = dataset_path or cfg["paths"]["dpo_standard_train"]
     rows = read_jsonl(path)
+    tokenizer = load_tokenizer(cfg["base_model"])
+    max_len = int(cfg["max_sequence_length"])
+    rows, dropped = filter_long_prompts(rows, tokenizer, max_len)
+    stem = repo_path(path).stem
+    save_json(repo_path(cfg["results_dir"]) / f"filtered_{stem}.json", {
+        "dataset": str(path), "max_sequence_length": max_len, "min_response_tokens": MIN_RESPONSE_TOKENS,
+        "kept": len(rows), "dropped": len(dropped), "dropped_examples": dropped,
+    })
+    print(f"[filter] {stem}: kept {len(rows)}, dropped {len(dropped)} (prompt > {max_len - MIN_RESPONSE_TOKENS} tokens)")
     if max_examples is not None:
         rows = rows[: int(max_examples)]
 
-    tokenizer = load_tokenizer(cfg["base_model"])
     model = load_policy(cfg, trainable=True, fresh_lora=True)
     loader = DataLoader(
         rows,
