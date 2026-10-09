@@ -1,0 +1,25 @@
+{
+  "run_name": "beta_0p3",
+  "dataset": "data/dpo_standard_train.jsonl",
+  "num_examples": 600,
+  "beta": 0.3,
+  "learning_rate": 2e-05,
+  "batch_size": 2,
+  "grad_accum_steps": 8,
+  "effective_batch": 16,
+  "epochs": 1,
+  "max_sequence_length": 768,
+  "max_grad_norm": 1.0,
+  "seed": 6304,
+  "lora": {
+    "r": 8,
+    "alpha": 16,
+    "dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "v_proj"
+    ]
+  },
+  "dtype": "float16",
+  "output": "/content/drive/MyDrive/ATML-PA2-LLM-PostTraining/outputs/task1_dpo/beta_0p3"
+}
