@@ -1,0 +1,10 @@
+{
+  "run_name": "fork_eps0p2_kl0",
+  "updates": 8,
+  "clip_epsilon": 0.2,
+  "kl_beta": 0.0,
+  "wall_clock_sec": 46.31423278799957,
+  "peak_vram_gib": 8.628889560699463,
+  "policy_adapter": "/content/drive/MyDrive/ATML-PA2-LLM-PostTraining/outputs/task2_ppo/fork_eps0p2_kl0",
+  "value_adapter": "/content/drive/MyDrive/ATML-PA2-LLM-PostTraining/outputs/task2_ppo/fork_eps0p2_kl0/value_critic"
+}

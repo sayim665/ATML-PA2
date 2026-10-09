@@ -1,0 +1,8 @@
+{
+  "run_name": "smoke",
+  "loss_type": "grpo",
+  "updates": 1,
+  "wall_clock_sec": 35.07905732099971,
+  "peak_vram_gib": 9.207575798034668,
+  "adapter": "/content/drive/MyDrive/ATML-PA2-LLM-PostTraining/outputs/task3_grpo/smoke"
+}

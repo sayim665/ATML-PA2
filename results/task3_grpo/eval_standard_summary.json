@@ -1,0 +1,39 @@
+{
+  "name": "standard",
+  "adapter": "outputs/task3_grpo/standard",
+  "num_prompts": 32,
+  "decoding": {
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "do_sample": true,
+    "max_new_tokens": 768,
+    "seed": 6304
+  },
+  "reward": {
+    "mean": 1.8421287536621094,
+    "std": 1.3663400463025457,
+    "median": 2.072265625,
+    "iqr": 1.41162109375,
+    "n": 32
+  },
+  "kl_token_mean": 0.00014178253902933567,
+  "kl_seq_sum": {
+    "mean": 0.04784717621805612,
+    "std": 0.0774560222218755,
+    "median": 0.03366177901625633,
+    "iqr": 0.07833375874906778,
+    "n": 32
+  },
+  "entropy_token_mean": 0.9632675065487797,
+  "length_tokens": {
+    "mean": 337.46875,
+    "std": 270.762347868823,
+    "median": 271.0,
+    "iqr": 465.25,
+    "n": 32
+  },
+  "truncated_rate": 0.09375,
+  "eos_rate": 0.90625,
+  "wall_clock_sec": 217.10888637599965,
+  "peak_vram_gib": 6.308709621429443
+}

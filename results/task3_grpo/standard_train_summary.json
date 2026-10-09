@@ -1,0 +1,8 @@
+{
+  "run_name": "standard",
+  "loss_type": "grpo",
+  "updates": 20,
+  "wall_clock_sec": 341.47025324599963,
+  "peak_vram_gib": 10.577857494354248,
+  "adapter": "/content/drive/MyDrive/ATML-PA2-LLM-PostTraining/outputs/task3_grpo/standard"
+}

@@ -1,0 +1,159 @@
+{
+  "length_bin_cut_points_tokens": [
+    9.0,
+    58.0
+  ],
+  "update1_identical_samples": true,
+  "update1_controlled_weights": [
+    {
+      "length": 512,
+      "advantage": -1.707677960395813,
+      "loss_tokens": 0,
+      "grpo_per_token_weight": 0.0,
+      "dr_grpo_per_token_weight": 0.0,
+      "grpo_sequence_weight": 0.0,
+      "dr_grpo_sequence_weight": 0.0
+    },
+    {
+      "length": 509,
+      "advantage": 0.8399103879928589,
+      "loss_tokens": 509,
+      "grpo_per_token_weight": 0.0004911591355599214,
+      "dr_grpo_per_token_weight": 0.00048828125,
+      "grpo_sequence_weight": 0.2099775969982147,
+      "dr_grpo_sequence_weight": 0.2087472595158033
+    },
+    {
+      "length": 492,
+      "advantage": 0.4033554196357727,
+      "loss_tokens": 492,
+      "grpo_per_token_weight": 0.0005081300813008131,
+      "dr_grpo_per_token_weight": 0.00048828125,
+      "grpo_sequence_weight": 0.10083885490894318,
+      "dr_grpo_sequence_weight": 0.09689983713906258
+    },
+    {
+      "length": 388,
+      "advantage": 0.46441206336021423,
+      "loss_tokens": 388,
+      "grpo_per_token_weight": 0.0006443298969072165,
+      "dr_grpo_per_token_weight": 0.00048828125,
+      "grpo_sequence_weight": 0.11610301584005356,
+      "dr_grpo_sequence_weight": 0.08798431669129059
+    }
+  ],
+  "runs": {
+    "norm_grpo": {
+      "loss_type": "grpo",
+      "updates": 8,
+      "train_length_first2": 240.25,
+      "train_length_last2": 68.75,
+      "train_truncated_rate_mean": 0.03125,
+      "train_grad_norm_mean": 0.9510712083429098,
+      "train_reward_mean": 0.453704833984375,
+      "heldout_reward": 1.6615753173828125,
+      "heldout_reward_std": 1.4673746030173684,
+      "heldout_kl_token_mean": 0.00013139769208666408,
+      "heldout_entropy": 0.934761217581485,
+      "heldout_length_mean": 311.28125,
+      "heldout_length_std": 256.9996637126934,
+      "heldout_truncated_rate": 0.03125,
+      "allocation_by_length": {
+        "short": {
+          "n": 12,
+          "mean_length": 5.083333333333333,
+          "mean_per_token_weight": 0.055324074074074074,
+          "mean_sequence_weight": 0.1235375899511079,
+          "share_of_total_weight": 0.263313239756828,
+          "mean_seq_weight_pos_adv": 0.1384998851766189,
+          "mean_seq_weight_neg_adv": 0.21339028477668762
+        },
+        "medium": {
+          "n": 9,
+          "mean_length": 24.88888888888889,
+          "mean_per_token_weight": 0.014635905490478206,
+          "mean_sequence_weight": 0.20035157766607073,
+          "share_of_total_weight": 0.32027836442246205,
+          "mean_seq_weight_pos_adv": 0.14156348258256912,
+          "mean_seq_weight_neg_adv": 0.22974562520782152
+        },
+        "long": {
+          "n": 10,
+          "mean_length": 226.9,
+          "mean_per_token_weight": 0.0018461404893865372,
+          "mean_sequence_weight": 0.2344375377520919,
+          "share_of_total_weight": 0.41640839582070993,
+          "mean_seq_weight_pos_adv": 0.27353311982005835,
+          "mean_seq_weight_neg_adv": 0.07805520948022604
+        },
+        "corr_length_vs_sequence_weight": 0.09675541315713466
+      },
+      "length_trajectory": [
+        475.25,
+        5.25,
+        51.0,
+        80.5,
+        4.0,
+        13.0,
+        63.0,
+        74.5
+      ]
+    },
+    "norm_dr_grpo": {
+      "loss_type": "dr_grpo",
+      "updates": 8,
+      "train_length_first2": 240.25,
+      "train_length_last2": 68.75,
+      "train_truncated_rate_mean": 0.03125,
+      "train_grad_norm_mean": 0.053122287383303046,
+      "train_reward_mean": 0.45281982421875,
+      "heldout_reward": 1.7515125274658203,
+      "heldout_reward_std": 1.3556990553843924,
+      "heldout_kl_token_mean": 0.00010754161340568636,
+      "heldout_entropy": 0.9620685526276416,
+      "heldout_length_mean": 331.78125,
+      "heldout_length_std": 273.43426248083375,
+      "heldout_truncated_rate": 0.09375,
+      "allocation_by_length": {
+        "short": {
+          "n": 12,
+          "mean_length": 5.083333333333333,
+          "mean_per_token_weight": 0.00048828125,
+          "mean_sequence_weight": 0.001258224897052666,
+          "share_of_total_weight": 0.014955277020766138,
+          "mean_seq_weight_pos_adv": 0.0013678838464935932,
+          "mean_seq_weight_neg_adv": 0.0021990094450302423
+        },
+        "medium": {
+          "n": 9,
+          "mean_length": 24.88888888888889,
+          "mean_per_token_weight": 0.00048828125,
+          "mean_sequence_weight": 0.008620529912554452,
+          "share_of_total_weight": 0.07684779557894274,
+          "mean_seq_weight_pos_adv": 0.0033613768512926376,
+          "mean_seq_weight_neg_adv": 0.01125010644318536
+        },
+        "long": {
+          "n": 10,
+          "mean_length": 226.9,
+          "mean_per_token_weight": 0.00048828125,
+          "mean_sequence_weight": 0.09169065746318665,
+          "share_of_total_weight": 0.9081969274002911,
+          "mean_seq_weight_pos_adv": 0.11151065698504681,
+          "mean_seq_weight_neg_adv": 0.012410659375746036
+        },
+        "corr_length_vs_sequence_weight": 0.8181133310447943
+      },
+      "length_trajectory": [
+        475.25,
+        5.25,
+        51.0,
+        80.5,
+        4.0,
+        13.0,
+        63.0,
+        74.5
+      ]
+    }
+  }
+}

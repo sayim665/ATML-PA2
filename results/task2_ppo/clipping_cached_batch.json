@@ -1,0 +1,42 @@
+{
+  "n_rollouts": 32,
+  "n_tokens": 8814,
+  "alignment": {
+    "exact_length_match": 32,
+    "n": 32,
+    "ref_logprob_abs_diff_mean": 0.04878569509310182,
+    "new_vs_old_logprob_abs_diff_mean": 0.04920901897276053
+  },
+  "ratio_stats": {
+    "mean": 1.011981725692749,
+    "std": 0.5337115526199341,
+    "min": 2.2366484220270877e-09,
+    "max": 32.57938766479492,
+    "p05": 0.9172328114509583,
+    "p95": 1.066787600517273
+  },
+  "unclipped_surrogate": 0.00027960684383288026,
+  "per_epsilon": [
+    {
+      "epsilon": 0.05,
+      "clip_fraction_outside_band": 0.15429997444152832,
+      "affected_token_fraction_binding": 0.07612888514995575,
+      "clipped_surrogate": -0.01139487512409687,
+      "surrogate_reduction_vs_unclipped": 0.011674482375383377
+    },
+    {
+      "epsilon": 0.2,
+      "clip_fraction_outside_band": 0.04129793494939804,
+      "affected_token_fraction_binding": 0.019741320982575417,
+      "clipped_surrogate": -0.00790538638830185,
+      "surrogate_reduction_vs_unclipped": 0.008184993639588356
+    },
+    {
+      "epsilon": 0.5,
+      "clip_fraction_outside_band": 0.021102791652083397,
+      "affected_token_fraction_binding": 0.010097571648657322,
+      "clipped_surrogate": -0.005374319851398468,
+      "surrogate_reduction_vs_unclipped": 0.005653926637023687
+    }
+  ]
+}

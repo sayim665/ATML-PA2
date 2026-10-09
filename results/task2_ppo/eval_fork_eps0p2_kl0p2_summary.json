@@ -1,0 +1,46 @@
+{
+  "name": "fork_eps0p2_kl0p2",
+  "adapter": "outputs/task2_ppo/fork_eps0p2_kl0p2",
+  "num_prompts": 32,
+  "decoding": {
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "do_sample": true,
+    "max_new_tokens": 768,
+    "seed": 6304
+  },
+  "reward_raw": {
+    "mean": 1.9244575500488281,
+    "std": 1.4005029941540958,
+    "median": 2.130859375,
+    "iqr": 1.465087890625,
+    "n": 32
+  },
+  "reward_effective": {
+    "mean": 1.8307075500488281,
+    "std": 1.3852964249868123,
+    "median": 1.84326171875,
+    "iqr": 1.39453125,
+    "n": 32
+  },
+  "kl_token_mean": -2.716503093833829e-06,
+  "kl_seq_sum": {
+    "mean": -0.0009572277776896954,
+    "std": 0.10179589066587001,
+    "median": 0.014547932893037796,
+    "iqr": 0.08124234853312373,
+    "n": 32
+  },
+  "entropy_token_mean": 0.9474535913078782,
+  "length_tokens": {
+    "mean": 352.375,
+    "std": 282.1007964806197,
+    "median": 269.5,
+    "iqr": 578.0,
+    "n": 32
+  },
+  "truncated_rate": 0.09375,
+  "eos_rate": 0.90625,
+  "wall_clock_sec": 221.7686517809998,
+  "peak_vram_gib": 6.308727264404297
+}
