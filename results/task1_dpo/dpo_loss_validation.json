@@ -1,0 +1,8 @@
+{
+  "bug": "logits used policy_margin + ref_margin; manual requires policy_margin - ref_margin",
+  "expected_init_loss": 0.6931471805599453,
+  "check1_policy_eq_ref_zeros": 0.6931471824645996,
+  "check2_policy_eq_ref_ref_prefers_chosen": 0.6931471824645996,
+  "check3_policy_improved": 0.4740769863128662,
+  "check3_accuracy": 1.0
+}
