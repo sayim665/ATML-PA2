@@ -28,3 +28,8 @@ data/*
 # Misc
 *.zip
 .DS_Store
+
+# Model weights (safety net)
+*.pt
+*.pth
+*.safetensors
