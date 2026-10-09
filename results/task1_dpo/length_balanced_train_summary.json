@@ -1,0 +1,9 @@
+{
+  "run_name": "length_balanced",
+  "optimizer_steps": 90,
+  "micro_batches": 716,
+  "skipped_nonfinite": 0,
+  "wall_clock_sec": 1170.8895513730004,
+  "peak_vram_gib": 7.525243282318115,
+  "adapter": "/content/drive/MyDrive/ATML-PA2-LLM-PostTraining/outputs/task1_dpo/length_balanced"
+}

@@ -1,0 +1,53 @@
+{
+  "name": "standard_strat",
+  "adapter": "outputs/task1_dpo/standard",
+  "pairs_file": "data/dpo_length_stratified_eval.jsonl",
+  "beta_for_loss": 0.1,
+  "pairs_evaluated": 235,
+  "pairs_dropped_long_prompt": 11,
+  "dropped_indices": [
+    6,
+    7,
+    20,
+    22,
+    34,
+    57,
+    76,
+    82,
+    144,
+    196,
+    209
+  ],
+  "heldout_dpo_loss": 0.6821793457295032,
+  "heldout_pref_accuracy": 0.5787234042553191,
+  "heldout_margin": {
+    "mean": 0.2631594475279463,
+    "std": 1.2992279045249815,
+    "median": 0.1937408447265625,
+    "iqr": 1.3159027099609375,
+    "n": 235
+  },
+  "strata_key": "length_stratum",
+  "by_stratum": {
+    "length_matched": {
+      "n": 80,
+      "pref_accuracy": 0.6125,
+      "dpo_loss": 0.6855014845728874,
+      "margin_mean": 0.18211560249328612
+    },
+    "preferred_longer": {
+      "n": 76,
+      "pref_accuracy": 0.4473684210526316,
+      "dpo_loss": 0.6963764264395362,
+      "margin_mean": -0.020791907059518916
+    },
+    "rejected_longer": {
+      "n": 79,
+      "pref_accuracy": 0.6708860759493671,
+      "dpo_loss": 0.6651572034328799,
+      "margin_mean": 0.6183975557737713
+    }
+  },
+  "wall_clock_sec": 112.48750959900099,
+  "peak_vram_gib": 4.627588272094727
+}
