@@ -1,0 +1,63 @@
+{
+  "name": "beta_0p03",
+  "adapter": "outputs/task1_dpo/beta_0p03",
+  "pairs_file": "data/dpo_standard_eval.jsonl",
+  "beta_for_loss": 0.03,
+  "pairs_evaluated": 289,
+  "pairs_dropped_long_prompt": 11,
+  "dropped_indices": [
+    32,
+    60,
+    71,
+    95,
+    103,
+    174,
+    184,
+    239,
+    240,
+    254,
+    284
+  ],
+  "heldout_dpo_loss": 0.6910033061017627,
+  "heldout_pref_accuracy": 0.6401384083044983,
+  "heldout_margin": {
+    "mean": 0.14620429174297822,
+    "std": 0.6448886412343493,
+    "median": 0.159149169921875,
+    "iqr": 0.7643203735351562,
+    "n": 289
+  },
+  "gen_prompts": 128,
+  "decoding": {
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "do_sample": true,
+    "max_new_tokens": 256,
+    "seed": 6304
+  },
+  "kl_token_mean": 9.166813331387066e-05,
+  "kl_seq_sum": {
+    "mean": 0.015055059573569451,
+    "std": 0.1968862160685388,
+    "median": 0.010387706570327282,
+    "iqr": 0.17658939771354198,
+    "n": 128
+  },
+  "reward": {
+    "mean": 1.2671767473220825,
+    "std": 1.2410289535386982,
+    "median": 1.39453125,
+    "iqr": 2.1051025390625,
+    "n": 128
+  },
+  "length_tokens": {
+    "mean": 164.234375,
+    "std": 103.19539145891824,
+    "median": 226.0,
+    "iqr": 208.25,
+    "n": 128
+  },
+  "truncated_rate": 0.453125,
+  "wall_clock_sec": 501.31054467100057,
+  "peak_vram_gib": 9.032182216644287
+}

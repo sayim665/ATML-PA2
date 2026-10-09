@@ -1,0 +1,9 @@
+{
+  "run_name": "beta_0p03",
+  "optimizer_steps": 38,
+  "micro_batches": 300,
+  "skipped_nonfinite": 0,
+  "wall_clock_sec": 613.7646068000004,
+  "peak_vram_gib": 7.526526927947998,
+  "adapter": "/content/drive/MyDrive/ATML-PA2-LLM-PostTraining/outputs/task1_dpo/beta_0p03"
+}
