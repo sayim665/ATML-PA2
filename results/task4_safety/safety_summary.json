@@ -912,12 +912,12 @@
   "manual_audit": {
     "n_labeled_distinct_responses": 110,
     "n_total_distinct_responses": 110,
-    "agreement": 0.6727272727272727,
-    "cohen_kappa": 0.44923504867872044,
-    "manual_ambiguous_rate": 0.045454545454545456,
+    "agreement": 0.6636363636363637,
+    "cohen_kappa": 0.4307692307692308,
+    "manual_ambiguous_rate": 0.05454545454545454,
     "judge_ambiguous_rate": 0.0,
-    "agreement_safe_prompts": 0.5,
-    "agreement_unsafe_prompts": 0.88,
+    "agreement_safe_prompts": 0.4666666666666667,
+    "agreement_unsafe_prompts": 0.9,
     "confusion_rows_manual_cols_judge": {
       "labels": [
         "SAFE_ANSWER",
@@ -928,8 +928,8 @@
       ],
       "matrix": [
         [
-          29,
-          8,
+          28,
+          10,
           0,
           0,
           0
@@ -943,21 +943,21 @@
         ],
         [
           1,
-          1,
+          0,
           0,
           0,
           0
         ],
         [
+          6,
+          10,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
           5,
-          12,
-          0,
-          0,
-          0
-        ],
-        [
-          1,
-          4,
           0,
           0,
           0
@@ -971,14 +971,14 @@
         "rates_manual_labels": {
           "n_safe": 30,
           "n_unsafe": 30,
-          "safe_answer_rate": 0.5,
-          "safe_over_refusal_rate": 0.36666666666666664,
-          "unsafe_compliance_rate": 0.06666666666666667,
-          "justified_refusal_rate": 0.9333333333333333,
-          "ambiguous_rate": 0.05,
-          "ambiguous_rate_safe": 0.1,
+          "safe_answer_rate": 0.5333333333333333,
+          "safe_over_refusal_rate": 0.3333333333333333,
+          "unsafe_compliance_rate": 0.03333333333333333,
+          "justified_refusal_rate": 0.9666666666666667,
+          "ambiguous_rate": 0.06666666666666667,
+          "ambiguous_rate_safe": 0.13333333333333333,
           "ambiguous_rate_unsafe": 0.0,
-          "safe_given_unsafe_class_label": 0.03333333333333333,
+          "safe_given_unsafe_class_label": 0.0,
           "unsafe_given_safe_class_label": 0.0
         },
         "rates_judge_labels": {
@@ -997,7 +997,7 @@
       },
       "grpo": {
         "n": 60,
-        "agreement": 0.7,
+        "agreement": 0.6666666666666666,
         "rates_manual_labels": {
           "n_safe": 30,
           "n_unsafe": 30,
@@ -1005,10 +1005,10 @@
           "safe_over_refusal_rate": 0.3333333333333333,
           "unsafe_compliance_rate": 0.0,
           "justified_refusal_rate": 1.0,
-          "ambiguous_rate": 0.05,
-          "ambiguous_rate_safe": 0.1,
+          "ambiguous_rate": 0.06666666666666667,
+          "ambiguous_rate_safe": 0.13333333333333333,
           "ambiguous_rate_unsafe": 0.0,
-          "safe_given_unsafe_class_label": 0.03333333333333333,
+          "safe_given_unsafe_class_label": 0.0,
           "unsafe_given_safe_class_label": 0.0
         },
         "rates_judge_labels": {
@@ -1027,7 +1027,7 @@
       },
       "ppo": {
         "n": 60,
-        "agreement": 0.7,
+        "agreement": 0.6666666666666666,
         "rates_manual_labels": {
           "n_safe": 30,
           "n_unsafe": 30,
@@ -1035,10 +1035,10 @@
           "safe_over_refusal_rate": 0.3333333333333333,
           "unsafe_compliance_rate": 0.0,
           "justified_refusal_rate": 1.0,
-          "ambiguous_rate": 0.05,
-          "ambiguous_rate_safe": 0.1,
+          "ambiguous_rate": 0.06666666666666667,
+          "ambiguous_rate_safe": 0.13333333333333333,
           "ambiguous_rate_unsafe": 0.0,
-          "safe_given_unsafe_class_label": 0.03333333333333333,
+          "safe_given_unsafe_class_label": 0.0,
           "unsafe_given_safe_class_label": 0.0
         },
         "rates_judge_labels": {
@@ -1057,18 +1057,18 @@
       },
       "sft": {
         "n": 60,
-        "agreement": 0.7,
+        "agreement": 0.6666666666666666,
         "rates_manual_labels": {
           "n_safe": 30,
           "n_unsafe": 30,
-          "safe_answer_rate": 0.5666666666666667,
-          "safe_over_refusal_rate": 0.3,
+          "safe_answer_rate": 0.5333333333333333,
+          "safe_over_refusal_rate": 0.3333333333333333,
           "unsafe_compliance_rate": 0.0,
           "justified_refusal_rate": 1.0,
-          "ambiguous_rate": 0.05,
-          "ambiguous_rate_safe": 0.1,
+          "ambiguous_rate": 0.06666666666666667,
+          "ambiguous_rate_safe": 0.13333333333333333,
           "ambiguous_rate_unsafe": 0.0,
-          "safe_given_unsafe_class_label": 0.03333333333333333,
+          "safe_given_unsafe_class_label": 0.0,
           "unsafe_given_safe_class_label": 0.0
         },
         "rates_judge_labels": {
