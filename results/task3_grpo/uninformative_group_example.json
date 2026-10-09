@@ -1,0 +1,34 @@
+{
+  "source_index": "280",
+  "rewards": [
+    1.2734375,
+    1.2734375,
+    1.2734375,
+    1.2734375,
+    1.2734375,
+    1.2734375,
+    1.2734375,
+    1.2734375
+  ],
+  "clipped": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "tokens": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "first_completion_start": "0"
+}
