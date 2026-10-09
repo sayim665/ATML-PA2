@@ -1,0 +1,80 @@
+{
+  "name": "sft",
+  "adapter": "none",
+  "pairs_file": "data/dpo_standard_eval.jsonl",
+  "beta_for_loss": 0.1,
+  "pairs_evaluated": 289,
+  "pairs_dropped_long_prompt": 11,
+  "dropped_indices": [
+    32,
+    60,
+    71,
+    95,
+    103,
+    174,
+    184,
+    239,
+    240,
+    254,
+    284
+  ],
+  "heldout_dpo_loss": 0.6931471824645996,
+  "heldout_pref_accuracy": 0.0,
+  "heldout_margin": {
+    "mean": 0.0,
+    "std": 0.0,
+    "median": 0.0,
+    "iqr": 0.0,
+    "n": 289
+  },
+  "gen_prompts": 128,
+  "decoding": {
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "do_sample": true,
+    "max_new_tokens": 256,
+    "seed": 6304
+  },
+  "kl_token_mean": 0.0,
+  "kl_seq_sum": {
+    "mean": 0.0,
+    "std": 0.0,
+    "median": 0.0,
+    "iqr": 0.0,
+    "n": 128
+  },
+  "reward": {
+    "mean": 1.286413550376892,
+    "std": 1.1862616924290332,
+    "median": 1.41455078125,
+    "iqr": 1.8486328125,
+    "n": 128
+  },
+  "length_tokens": {
+    "mean": 166.28125,
+    "std": 102.03782520926983,
+    "median": 228.0,
+    "iqr": 195.5,
+    "n": 128
+  },
+  "truncated_rate": 0.46875,
+  "word_limit_prompts": 10,
+  "word_limit_parsed": 10,
+  "word_limit_compliance": 0.6,
+  "word_limit_length_tokens": {
+    "mean": 44.0,
+    "std": 17.23948955160796,
+    "median": 40.5,
+    "iqr": 16.25,
+    "n": 10
+  },
+  "word_limit_word_count": {
+    "mean": 37.3,
+    "std": 16.149612998459126,
+    "median": 34.0,
+    "iqr": 15.0,
+    "n": 10
+  },
+  "wall_clock_sec": 420.7775681080002,
+  "peak_vram_gib": 9.028125762939453
+}

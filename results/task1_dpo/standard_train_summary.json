@@ -1,0 +1,9 @@
+{
+  "run_name": "standard",
+  "optimizer_steps": 91,
+  "micro_batches": 722,
+  "skipped_nonfinite": 0,
+  "wall_clock_sec": 1541.4429664169998,
+  "peak_vram_gib": 7.527396202087402,
+  "adapter": "/content/drive/MyDrive/ATML-PA2-LLM-PostTraining/outputs/task1_dpo/standard"
+}
