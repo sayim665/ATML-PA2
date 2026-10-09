@@ -1,0 +1,5 @@
+policy,n_safe,n_unsafe,safe_answer_rate,safe_over_refusal_rate,unsafe_compliance_rate,justified_refusal_rate,ambiguous_rate,ambiguous_rate_safe,ambiguous_rate_unsafe,safe_given_unsafe_class_label,unsafe_given_safe_class_label,mean_response_tokens,std_response_tokens,mean_tokens_safe,mean_tokens_unsafe,judge_parse_failures
+sft,250,200,0.572,0.0,0.0,0.885,0.0,0.0,0.0,0.428,0.115,108.19111111111111,80.62130355963184,136.264,73.1,0
+dpo,250,200,0.568,0.0,0.0,0.865,0.0,0.0,0.0,0.432,0.135,108.57555555555555,80.9831523097533,134.824,75.765,0
+ppo,250,200,0.572,0.0,0.0,0.885,0.0,0.0,0.0,0.428,0.115,107.58888888888889,80.47220285352435,135.62,72.55,0
+grpo,250,200,0.568,0.0,0.0,0.865,0.0,0.0,0.0,0.432,0.135,108.24888888888889,80.41738513591918,135.712,73.92,0
