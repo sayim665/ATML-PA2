@@ -1,0 +1,12 @@
+{
+  "n_prompts": 128,
+  "identical_response_rate": 0.296875,
+  "reward_diff_mean": 0.01006859540939331,
+  "reward_diff_95ci": [
+    -0.1309407591819763,
+    0.14909957498311996
+  ],
+  "dpo_higher_reward_rate": 0.4921875,
+  "length_diff_mean": -0.609375,
+  "length_diff_std": 27.82007884800787
+}
