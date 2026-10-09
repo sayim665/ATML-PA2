@@ -44,7 +44,7 @@ def collect_group_rollout(policy, rm, rm_tok, tok, prompt_msgs, cfg, k):
     gen = batch_generate(policy, tok, msgs, int(cfg["max_prompt_length"]), int(cfg["max_completion_length"]),
                          temperature=float(g["temperature"]), top_p=float(g["top_p"]), do_sample=bool(g["do_sample"]))
     train_without_dropout(policy)
-    seq, attn, pw, resp = gen["sequences"], gen["attention_mask"], gen["prompt_width"], gen["response_ids"]
+    seq, attn, pw, resp = gen["sequences"].clone(), gen["attention_mask"].clone(), gen["prompt_width"], gen["response_ids"].clone()  # leave inference_mode tensors behind
     old_logp, ent = policy_token_stats(policy, seq, attn, pw, resp, with_entropy=True)
     with reference_mode(policy):
         ref_logp, _ = policy_token_stats(policy, seq, attn, pw, resp)

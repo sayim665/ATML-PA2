@@ -53,7 +53,7 @@ def collect_rollout(policy, value_model, reward_model, reward_tokenizer, tokeniz
     g = cfg["generation"]
     gen = batch_generate(policy, tokenizer, msgs, int(cfg["max_prompt_length"]), max_new,
                          temperature=float(g["temperature"]), top_p=float(g["top_p"]), do_sample=bool(g["do_sample"]))
-    seq, attn, pw, resp = gen["sequences"], gen["attention_mask"], gen["prompt_width"], gen["response_ids"]
+    seq, attn, pw, resp = gen["sequences"].clone(), gen["attention_mask"].clone(), gen["prompt_width"], gen["response_ids"].clone()  # leave inference_mode tensors behind
     mask = gen["response_mask"]
     old_logp, ent = policy_token_stats(policy, seq, attn, pw, resp, with_entropy=True)
     with reference_mode(policy):

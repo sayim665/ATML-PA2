@@ -1,0 +1,10 @@
+{
+  "run_name": "smoke",
+  "updates": 1,
+  "clip_epsilon": 0.2,
+  "kl_beta": 0.1,
+  "wall_clock_sec": 33.43687607500033,
+  "peak_vram_gib": 8.628889560699463,
+  "policy_adapter": "/content/drive/MyDrive/ATML-PA2-LLM-PostTraining/outputs/task2_ppo/smoke",
+  "value_adapter": "/content/drive/MyDrive/ATML-PA2-LLM-PostTraining/outputs/task2_ppo/smoke/value_critic"
+}

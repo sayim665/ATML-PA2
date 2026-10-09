@@ -1,0 +1,10 @@
+{
+  "run_name": "standard",
+  "updates": 20,
+  "clip_epsilon": 0.2,
+  "kl_beta": 0.1,
+  "wall_clock_sec": 241.2407900449998,
+  "peak_vram_gib": 9.084348678588867,
+  "policy_adapter": "/content/drive/MyDrive/ATML-PA2-LLM-PostTraining/outputs/task2_ppo/standard",
+  "value_adapter": "/content/drive/MyDrive/ATML-PA2-LLM-PostTraining/outputs/task2_ppo/standard/value_critic"
+}
