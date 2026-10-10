@@ -1,0 +1,225 @@
+{
+  "policies": [
+    {
+      "policy": "sft",
+      "gsm_accuracy": 0.2733333333333333,
+      "svamp_accuracy": 0.42,
+      "accuracy_drop": -0.14666666666666667,
+      "gsm_format": 0.35333333333333333,
+      "svamp_format": 0.55,
+      "gsm_winrate_vs_sft": null,
+      "svamp_winrate_vs_sft": null,
+      "winrate_drop": null,
+      "gsm_len_mean": 275.0966666666667,
+      "svamp_len_mean": 163.35,
+      "gsm_truncated": 0.02,
+      "svamp_truncated": 0.0,
+      "gsm_judge_agrees_on_decisive": null,
+      "svamp_judge_agrees_on_decisive": null
+    },
+    {
+      "policy": "rlvr",
+      "gsm_accuracy": 0.29333333333333333,
+      "svamp_accuracy": 0.46,
+      "accuracy_drop": -0.16666666666666669,
+      "gsm_format": 0.36333333333333334,
+      "svamp_format": 0.58,
+      "gsm_winrate_vs_sft": 0.5016666666666667,
+      "svamp_winrate_vs_sft": 0.515,
+      "winrate_drop": -0.013333333333333308,
+      "gsm_len_mean": 275.75,
+      "svamp_len_mean": 164.41,
+      "gsm_truncated": 0.023333333333333334,
+      "svamp_truncated": 0.0,
+      "gsm_judge_agrees_on_decisive": 0.0,
+      "svamp_judge_agrees_on_decisive": 0.5
+    },
+    {
+      "policy": "rlaif",
+      "gsm_accuracy": 0.29,
+      "svamp_accuracy": 0.48,
+      "accuracy_drop": -0.19,
+      "gsm_format": 0.36333333333333334,
+      "svamp_format": 0.62,
+      "gsm_winrate_vs_sft": 0.5,
+      "svamp_winrate_vs_sft": 0.51,
+      "winrate_drop": -0.010000000000000009,
+      "gsm_len_mean": 276.64,
+      "svamp_len_mean": 164.32,
+      "gsm_truncated": 0.023333333333333334,
+      "svamp_truncated": 0.0,
+      "gsm_judge_agrees_on_decisive": 0.0,
+      "svamp_judge_agrees_on_decisive": 0.3333333333333333
+    }
+  ],
+  "verifier_judge_agreement": {
+    "gsm": {
+      "n": 600,
+      "wins": 4,
+      "ties": 593,
+      "losses": 3,
+      "identical_to_sft": 498,
+      "win_rate_vs_sft": 0.5008333333333334,
+      "verifier_decisive_pairs": 17,
+      "judge_agrees_on_decisive": 0.0,
+      "judge_tie_on_decisive": 0.8823529411764706,
+      "judge_opposite_on_decisive": 0.11764705882352941,
+      "verifier_tie_pairs": 583,
+      "judge_tie_when_verifier_tie": 0.9914236706689536,
+      "three_way_agreement": 0.9633333333333334
+    },
+    "transfer": {
+      "n": 200,
+      "wins": 6,
+      "ties": 193,
+      "losses": 1,
+      "identical_to_sft": 172,
+      "win_rate_vs_sft": 0.5125,
+      "verifier_decisive_pairs": 12,
+      "judge_agrees_on_decisive": 0.4166666666666667,
+      "judge_tie_on_decisive": 0.5833333333333334,
+      "judge_opposite_on_decisive": 0.0,
+      "verifier_tie_pairs": 188,
+      "judge_tie_when_verifier_tie": 0.9893617021276596,
+      "three_way_agreement": 0.955
+    }
+  },
+  "diagnostics": {
+    "S_reason": {
+      "verifier": 0.0,
+      "judge": 0.0
+    },
+    "S_outcome": {
+      "verifier": 1.0,
+      "judge": 0.0
+    },
+    "by_category": {
+      "reasoning": {
+        "verifier": {
+          "n": 20,
+          "better_rate": 0.0,
+          "tie_rate": 1.0,
+          "wrong_preference_rate": 0.0
+        },
+        "judge": {
+          "n": 20,
+          "better_rate": 0.0,
+          "tie_rate": 1.0,
+          "wrong_preference_rate": 0.0
+        }
+      },
+      "outcome": {
+        "verifier": {
+          "n": 20,
+          "better_rate": 1.0,
+          "tie_rate": 0.0,
+          "wrong_preference_rate": 0.0
+        },
+        "judge": {
+          "n": 20,
+          "better_rate": 0.0,
+          "tie_rate": 1.0,
+          "wrong_preference_rate": 0.0
+        }
+      },
+      "filler": {
+        "verifier": {
+          "n": 20,
+          "better_rate": 0.0,
+          "tie_rate": 1.0,
+          "wrong_preference_rate": 0.0
+        },
+        "judge": {
+          "n": 20,
+          "better_rate": 0.0,
+          "tie_rate": 0.75,
+          "wrong_preference_rate": 0.25
+        }
+      },
+      "distractor": {
+        "verifier": {
+          "n": 20,
+          "better_rate": 1.0,
+          "tie_rate": 0.0,
+          "wrong_preference_rate": 0.0
+        },
+        "judge": {
+          "n": 20,
+          "better_rate": 0.25,
+          "tie_rate": 0.7,
+          "wrong_preference_rate": 0.05
+        }
+      }
+    },
+    "per_variant_reward_means": {
+      "clean_correct": {
+        "verifier_reward_mean": 1.0,
+        "rlaif_group_reward_mean": 0.49375
+      },
+      "corrupt_reasoning_correct_final": {
+        "verifier_reward_mean": 1.0,
+        "rlaif_group_reward_mean": 0.5
+      },
+      "good_reasoning_wrong_final": {
+        "verifier_reward_mean": 0.0,
+        "rlaif_group_reward_mean": 0.475
+      },
+      "persuasive_filler_correct": {
+        "verifier_reward_mean": 1.0,
+        "rlaif_group_reward_mean": 0.5875
+      },
+      "gold_distractor_wrong_final": {
+        "verifier_reward_mean": 0.0,
+        "rlaif_group_reward_mean": 0.44375
+      }
+    }
+  },
+  "failure_types": {
+    "gsm": {
+      "sft": {
+        "n_wrong": 218,
+        "no_final_answer": 194,
+        "no_final_answer_truncated": 6,
+        "wrong_final_number": 24,
+        "gold_mentioned_but_wrong_final": 3
+      },
+      "rlvr": {
+        "n_wrong": 212,
+        "no_final_answer": 191,
+        "no_final_answer_truncated": 7,
+        "wrong_final_number": 21,
+        "gold_mentioned_but_wrong_final": 2
+      },
+      "rlaif": {
+        "n_wrong": 213,
+        "no_final_answer": 191,
+        "no_final_answer_truncated": 7,
+        "wrong_final_number": 22,
+        "gold_mentioned_but_wrong_final": 4
+      }
+    },
+    "transfer": {
+      "sft": {
+        "n_wrong": 58,
+        "no_final_answer": 45,
+        "no_final_answer_truncated": 0,
+        "wrong_final_number": 13,
+        "gold_mentioned_but_wrong_final": 4
+      },
+      "rlvr": {
+        "n_wrong": 54,
+        "no_final_answer": 42,
+        "no_final_answer_truncated": 0,
+        "wrong_final_number": 12,
+        "gold_mentioned_but_wrong_final": 4
+      },
+      "rlaif": {
+        "n_wrong": 52,
+        "no_final_answer": 38,
+        "no_final_answer_truncated": 0,
+        "wrong_final_number": 14,
+        "gold_mentioned_but_wrong_final": 4
+      }
+    }
+  }
+}

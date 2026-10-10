@@ -1,0 +1,118 @@
+{
+  "dataset": "transfer",
+  "n_problems": 100,
+  "decoding": {
+    "greedy": true,
+    "max_new_tokens": 512,
+    "max_prompt_length": 512
+  },
+  "policies": {
+    "sft": {
+      "n": 100,
+      "exact_accuracy": 0.42,
+      "format_compliance": 0.55,
+      "length_tokens": {
+        "mean": 163.35,
+        "std": 70.86428931415314,
+        "median": 143.0,
+        "iqr": 79.25,
+        "n": 100
+      },
+      "truncated_rate": 0.0,
+      "failure_types": {
+        "n_wrong": 58,
+        "no_final_answer": 45,
+        "no_final_answer_truncated": 0,
+        "wrong_final_number": 13,
+        "gold_mentioned_but_wrong_final": 4
+      }
+    },
+    "rlvr": {
+      "n": 100,
+      "exact_accuracy": 0.46,
+      "format_compliance": 0.58,
+      "length_tokens": {
+        "mean": 164.41,
+        "std": 72.14860982721704,
+        "median": 143.0,
+        "iqr": 78.25,
+        "n": 100
+      },
+      "truncated_rate": 0.0,
+      "failure_types": {
+        "n_wrong": 54,
+        "no_final_answer": 42,
+        "no_final_answer_truncated": 0,
+        "wrong_final_number": 12,
+        "gold_mentioned_but_wrong_final": 4
+      }
+    },
+    "rlaif": {
+      "n": 100,
+      "exact_accuracy": 0.48,
+      "format_compliance": 0.62,
+      "length_tokens": {
+        "mean": 164.32,
+        "std": 73.00354511939814,
+        "median": 140.0,
+        "iqr": 78.25,
+        "n": 100
+      },
+      "truncated_rate": 0.0,
+      "failure_types": {
+        "n_wrong": 52,
+        "no_final_answer": 38,
+        "no_final_answer_truncated": 0,
+        "wrong_final_number": 14,
+        "gold_mentioned_but_wrong_final": 4
+      }
+    }
+  },
+  "pairwise_vs_sft": {
+    "rlvr": {
+      "n": 100,
+      "wins": 4,
+      "ties": 95,
+      "losses": 1,
+      "identical_to_sft": 85,
+      "win_rate_vs_sft": 0.515,
+      "verifier_decisive_pairs": 6,
+      "judge_agrees_on_decisive": 0.5,
+      "judge_tie_on_decisive": 0.5,
+      "judge_opposite_on_decisive": 0.0,
+      "verifier_tie_pairs": 94,
+      "judge_tie_when_verifier_tie": 0.9787234042553191,
+      "three_way_agreement": 0.95
+    },
+    "rlaif": {
+      "n": 100,
+      "wins": 2,
+      "ties": 98,
+      "losses": 0,
+      "identical_to_sft": 87,
+      "win_rate_vs_sft": 0.51,
+      "verifier_decisive_pairs": 6,
+      "judge_agrees_on_decisive": 0.3333333333333333,
+      "judge_tie_on_decisive": 0.6666666666666666,
+      "judge_opposite_on_decisive": 0.0,
+      "verifier_tie_pairs": 94,
+      "judge_tie_when_verifier_tie": 1.0,
+      "three_way_agreement": 0.96
+    }
+  },
+  "verifier_judge_agreement_pooled": {
+    "n": 200,
+    "wins": 6,
+    "ties": 193,
+    "losses": 1,
+    "identical_to_sft": 172,
+    "win_rate_vs_sft": 0.5125,
+    "verifier_decisive_pairs": 12,
+    "judge_agrees_on_decisive": 0.4166666666666667,
+    "judge_tie_on_decisive": 0.5833333333333334,
+    "judge_opposite_on_decisive": 0.0,
+    "verifier_tie_pairs": 188,
+    "judge_tie_when_verifier_tie": 0.9893617021276596,
+    "three_way_agreement": 0.955
+  }
+}
