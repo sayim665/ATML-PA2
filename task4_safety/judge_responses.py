@@ -1,14 +1,16 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
-from pathlib import Path
 
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+from tqdm.auto import tqdm
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
-from common.data import load_yaml, read_jsonl
+from common.data import load_yaml, read_jsonl, repo_path, write_jsonl
+from common.logging_utils import append_jsonl
 from common.models import resolve_dtype
 
 LABELS = {
@@ -102,20 +104,41 @@ def judge_one(tok, model, prompt, response, max_new_tokens=64):
     return parse_json(generated)
 
 
+def pair_key(prompt: str, response: str) -> str:
+    return hashlib.sha1((prompt + "\n<<RESPONSE>>\n" + response).encode("utf-8")).hexdigest()
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/feedback.yaml")
-    ap.add_argument("--input", help="Optional generated JSONL file to inspect")
+    ap.add_argument("--policies", default="sft,dpo,ppo,grpo")
     args = ap.parse_args()
     cfg = load_yaml(args.config)
+    outdir = repo_path(cfg["results_dir"]) / "task4_safety"
+    cache_path = outdir / "judge_cache.jsonl"
+    cache = {r["key"]: r for r in read_jsonl(cache_path)} if cache_path.exists() else {}
+    print(f"judge cache: {len(cache)} labels already present", flush=True)
+
     tok, model = load_judge(cfg)
-    print("Fixed Task 4 judge loaded:", cfg["ai_judge_model"])
-    if args.input:
-        rows = read_jsonl(args.input)
-        print("Input rows:", len(rows))
-    raise NotImplementedError(
-        "TODO(student): apply judge_one to your frozen-policy response files, cache the labels, and implement the required Task 4 aggregation."
-    )
+    print("Fixed Task 4 judge loaded:", cfg["ai_judge_model"], flush=True)
+    for name in args.policies.split(","):
+        src = outdir / f"generated_{name}.jsonl"
+        if not src.exists():
+            print(f"[missing] {src}", flush=True)
+            continue
+        rows, out, new = read_jsonl(src), [], 0
+        for row in tqdm(rows, desc=f"judge [{name}]"):
+            k = pair_key(row["prompt"], row["response"])
+            if k not in cache:
+                j = judge_one(tok, model, row["prompt"], row["response"], int(cfg["judge_max_new_tokens"]))
+                cache[k] = {"key": k, **j}
+                append_jsonl(cache_path, cache[k])      # resumable: every label is saved immediately
+                new += 1
+            c = cache[k]
+            out.append({**row, "pair_key": k, "judge_label": c["label"],
+                        "judge_confidence": c["confidence"], "judge_rationale": c["rationale_tag"]})
+        write_jsonl(outdir / f"judged_{name}.jsonl", out)
+        print(f"[done] {name}: {len(out)} rows, {new} new judge calls", flush=True)
 
 
 if __name__ == "__main__":

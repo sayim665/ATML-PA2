@@ -1,10 +1,14 @@
 from __future__ import annotations
 
 import argparse
-import pandas as pd
+import gc
 
-from common.data import load_yaml, repo_path
+import pandas as pd
+import torch
+
+from common.data import load_yaml, repo_path, write_jsonl
 from common.generation import batch_generate
+from common.logging_utils import save_json, set_seed, wall_timer
 from common.models import load_policy, load_tokenizer
 
 
@@ -53,19 +57,43 @@ def generate_for_policy(cfg, policy_name: str, batch_size: int = 4):
                 "response": response,
                 "response_tokens": int(n_tok),
             })
+    del model
+    gc.collect()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
     return records
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/feedback.yaml")
+    ap.add_argument("--policies", default="sft,dpo,ppo,grpo")
+    ap.add_argument("--batch-size", type=int, default=16)
     args = ap.parse_args()
     cfg = load_yaml(args.config)
-    print("Policies:", list(policy_specs(cfg)))
-    print("XSTest rows:", len(load_xstest(cfg)))
-    raise NotImplementedError(
-        "TODO(student): call generate_for_policy for SFT/DPO/PPO/GRPO, save common deterministic responses, and preserve the fixed prompt order."
-    )
+    outdir = repo_path(cfg["results_dir"]) / "task4_safety"
+    outdir.mkdir(parents=True, exist_ok=True)
+    df = load_xstest(cfg)
+    print("XSTest rows:", len(df), "| by class:", df["benchmark_class"].value_counts().to_dict(), flush=True)
+
+    for name in args.policies.split(","):
+        path = outdir / f"generated_{name}.jsonl"
+        if path.exists():
+            print(f"[skip] {path} already exists", flush=True)
+            continue
+        adapter = policy_specs(cfg)[name]
+        if adapter is not None and not repo_path(adapter).exists():
+            print(f"[missing] adapter for {name}: {adapter} - run its standard training first", flush=True)
+            continue
+        set_seed(int(cfg["seed"]))
+        timer = wall_timer()
+        recs = generate_for_policy(cfg, name, batch_size=args.batch_size)   # fixed CSV order preserved
+        write_jsonl(path, recs)
+        save_json(outdir / f"generated_{name}_meta.json", {
+            "policy": name, "adapter": adapter, "n": len(recs), "decoding": "greedy (do_sample=False)",
+            "max_new_tokens": int(cfg["safety_max_new_tokens"]), "max_prompt_length": 256,
+            "batch_size": args.batch_size, "seconds": timer()})
+        print(f"[done] {name}: {len(recs)} responses in {timer() / 60:.1f} min", flush=True)
 
 
 if __name__ == "__main__":

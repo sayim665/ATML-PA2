@@ -18,11 +18,7 @@ POLICIES = ["sft", "rlvr", "rlaif"]
 
 
 def policy_specs(cfg):
-    return {
-        "sft": None,
-        "rlvr": cfg["policies"]["rlvr"],
-        "rlaif": cfg["policies"]["rlaif"],
-    }
+    return {"sft": None, "rlvr": cfg["policies"]["rlvr"], "rlaif": cfg["policies"]["rlaif"]}
 
 
 def dataset_path(cfg, dataset: str):
@@ -109,3 +105,64 @@ def policy_summary(recs):
 
 def pair_summary(prs):
     n = len(prs)
+    wins = sum(p["judge"] == "A" for p in prs)
+    ties = sum(p["judge"] == "TIE" for p in prs)
+    dec = [p for p in prs if p["verifier"] != "TIE"]
+    vt = [p for p in prs if p["verifier"] == "TIE"]
+    return {
+        "n": n, "wins": wins, "ties": ties, "losses": n - wins - ties,
+        "identical_to_sft": sum(p["identical"] for p in prs),
+        "win_rate_vs_sft": (wins + 0.5 * ties) / n if n else None,
+        "verifier_decisive_pairs": len(dec),
+        "judge_agrees_on_decisive": float(np.mean([p["judge"] == p["verifier"] for p in dec])) if dec else None,
+        "judge_tie_on_decisive": float(np.mean([p["judge"] == "TIE" for p in dec])) if dec else None,
+        "judge_opposite_on_decisive": float(np.mean([p["judge"] not in (p["verifier"], "TIE") for p in dec])) if dec else None,
+        "verifier_tie_pairs": len(vt),
+        "judge_tie_when_verifier_tie": float(np.mean([p["judge"] == "TIE" for p in vt])) if vt else None,
+        "three_way_agreement": float(np.mean([p["judge"] == p["verifier"] for p in prs])) if n else None,
+    }
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--config", default="configs/feedback.yaml")
+    ap.add_argument("--dataset", choices=["gsm", "transfer"], default="gsm")
+    ap.add_argument("--batch-size", type=int, default=16)
+    args = ap.parse_args()
+    cfg, rows, _ = load_math_evaluation(args.config, args.dataset)
+    outdir = repo_path(cfg["results_dir"]) / "task5_feedback"
+    outdir.mkdir(parents=True, exist_ok=True)
+    print(f"{args.dataset}: {len(rows)} problems", flush=True)
+
+    gens = {p: generate(cfg, p, rows, args.dataset, outdir, args.batch_size) for p in POLICIES}
+
+    judge = PairwiseAIJudge(cfg, outdir / "pairwise_cache.json")
+    pairs = []
+    for p in ["rlvr", "rlaif"]:
+        for a, b in zip(gens[p], gens["sft"]):
+            identical = a["response"] == b["response"]
+            # A = trained policy, B = SFT. Identical texts are a tie by definition (no judge call).
+            pref = "TIE" if identical else judge.compare(a["question"], a["response"], b["response"])
+            ver = "A" if a["correct"] > b["correct"] else ("B" if a["correct"] < b["correct"] else "TIE")
+            pairs.append({"dataset": args.dataset, "policy": p, "index": a["index"], "judge": pref,
+                          "verifier": ver, "identical": identical,
+                          "policy_correct": a["correct"], "sft_correct": b["correct"]})
+        print(f"[judge] {p} vs sft done", flush=True)
+    write_jsonl(outdir / f"pairs_{args.dataset}.jsonl", pairs)
+
+    summary = {
+        "dataset": args.dataset, "n_problems": len(rows),
+        "decoding": {"greedy": True, "max_new_tokens": int(cfg["math_max_new_tokens"]), "max_prompt_length": 512},
+        "policies": {p: policy_summary(gens[p]) for p in POLICIES},
+        "pairwise_vs_sft": {p: pair_summary([x for x in pairs if x["policy"] == p]) for p in ["rlvr", "rlaif"]},
+        "verifier_judge_agreement_pooled": pair_summary(pairs),
+    }
+    save_json(outdir / f"eval_{args.dataset}_summary.json", summary)
+    for p, s in summary["policies"].items():
+        w = summary["pairwise_vs_sft"].get(p, {})
+        print(f"{p:6s} acc {s['exact_accuracy']:.3f} | format {s['format_compliance']:.3f} | len {s['length_tokens']['mean']:.0f} "
+              f"| trunc {s['truncated_rate']:.2f} | winrate_vs_sft {w.get('win_rate_vs_sft')} | agree {w.get('judge_agrees_on_decisive')}", flush=True)
+
+
+if __name__ == "__main__":
+    main()
