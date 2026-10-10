@@ -1,6 +1,26 @@
 {
   "bug": "clipped surrogate used torch.maximum; manual requires min(rho*A, clip(rho)*A)",
-  "before_fix": {
+  "cases": "(A, ratio) = (+1,1.5) (+1,0.5) (-1,0.5) (-1,1.5), eps=0.2",
+  "current_objective": {
+    "objective_sum": -0.6,
+    "grad_nonzero": [
+      false,
+      true,
+      false,
+      true
+    ],
+    "clip_fraction": 1.0
+  },
+  "expected": {
+    "objective_sum": -0.6,
+    "grad_nonzero": [
+      false,
+      true,
+      false,
+      true
+    ]
+  },
+  "with_original_defect": {
     "objective_sum": 0.6,
     "grad_nonzero": [
       true,
@@ -8,23 +28,6 @@
       true,
       false
     ]
-  },
-  "clip": {
-    "objective_sum": -0.6,
-    "expected_objective_sum": -0.6,
-    "grad_nonzero": [
-      false,
-      true,
-      false,
-      true
-    ],
-    "expected_grad_nonzero": [
-      false,
-      true,
-      false,
-      true
-    ],
-    "clip_fraction": 1.0
   },
   "gae": {
     "advantages": [

@@ -3,6 +3,7 @@
   "expected_init_loss": 0.6931471805599453,
   "check1_policy_eq_ref_zeros": 0.6931471824645996,
   "check2_policy_eq_ref_ref_prefers_chosen": 0.6931471824645996,
+  "check2_with_original_defect": 0.018149929121136665,
   "check3_policy_improved": 0.4740769863128662,
   "check3_accuracy": 1.0
 }

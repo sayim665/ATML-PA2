@@ -1,0 +1,22 @@
+{
+  "generation_prompt_cap": 256,
+  "reward_window_grpo": 1024,
+  "reward_window_ppo": 1280,
+  "train_frac_over_256": 0.21333333333333335,
+  "train_frac_over_1024": 0.0125,
+  "train_frac_over_1280": 0.008333333333333333,
+  "eval32_over_256": 3,
+  "eval32_over_256_indices": [
+    1,
+    4,
+    11
+  ],
+  "grpo_update18_prompt_tokens": 3903,
+  "grpo_update18_rewards": [
+    -5.16015625,
+    -5.16015625,
+    -5.16015625,
+    -5.16015625
+  ],
+  "grpo_update18_identical_texts": false
+}

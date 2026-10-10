@@ -1,14 +1,8 @@
 {
-  "bug": "group_relative_advantages normalized over the whole batch and ignored group_ids; manual requires per-prompt mean/std",
-  "note": "with prompts_per_update=1 the batch is a single group, so the defect is invisible in the standard continuation but corrupts any multi-group batch (e.g. the K regrouping study)",
-  "after_fix": {
+  "bug": "group_relative_advantages normalized over the whole batch and ignored group_ids",
+  "note": "with prompts_per_update=1 the batch is one group, so the defect is invisible in the standard continuation but corrupts any multi-group batch (e.g. the K regrouping study)",
+  "current": {
     "advantages": [
-      -1.0,
-      1.0,
-      -1.0,
-      1.0
-    ],
-    "expected": [
       -1.0,
       1.0,
       -1.0,
@@ -19,12 +13,34 @@
       0.0,
       -1.0,
       1.0
+    ]
+  },
+  "expected": {
+    "advantages": [
+      -1.0,
+      1.0,
+      -1.0,
+      1.0
     ],
-    "expected_flat": [
+    "flat_group_advantages": [
       0.0,
       0.0,
       -1.0,
       1.0
+    ]
+  },
+  "with_original_defect": {
+    "advantages": [
+      0.7845,
+      1.1767,
+      -1.1767,
+      -0.7845
+    ],
+    "flat_group_advantages": [
+      -0.9045,
+      -0.9045,
+      0.3015,
+      1.5076
     ]
   }
 }
