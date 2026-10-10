@@ -1,0 +1,93 @@
+{
+  "n_problems": 20,
+  "pair_definition": "each perturbed variant vs clean_correct; clean_correct is the diagnostically better response",
+  "by_category": {
+    "reasoning": {
+      "verifier": {
+        "n": 20,
+        "better_rate": 0.0,
+        "tie_rate": 1.0,
+        "wrong_preference_rate": 0.0
+      },
+      "judge": {
+        "n": 20,
+        "better_rate": 0.0,
+        "tie_rate": 1.0,
+        "wrong_preference_rate": 0.0
+      }
+    },
+    "outcome": {
+      "verifier": {
+        "n": 20,
+        "better_rate": 1.0,
+        "tie_rate": 0.0,
+        "wrong_preference_rate": 0.0
+      },
+      "judge": {
+        "n": 20,
+        "better_rate": 0.0,
+        "tie_rate": 1.0,
+        "wrong_preference_rate": 0.0
+      }
+    },
+    "filler": {
+      "verifier": {
+        "n": 20,
+        "better_rate": 0.0,
+        "tie_rate": 1.0,
+        "wrong_preference_rate": 0.0
+      },
+      "judge": {
+        "n": 20,
+        "better_rate": 0.0,
+        "tie_rate": 0.75,
+        "wrong_preference_rate": 0.25
+      }
+    },
+    "distractor": {
+      "verifier": {
+        "n": 20,
+        "better_rate": 1.0,
+        "tie_rate": 0.0,
+        "wrong_preference_rate": 0.0
+      },
+      "judge": {
+        "n": 20,
+        "better_rate": 0.25,
+        "tie_rate": 0.7,
+        "wrong_preference_rate": 0.05
+      }
+    }
+  },
+  "S_reason": {
+    "verifier": 0.0,
+    "judge": 0.0
+  },
+  "S_outcome": {
+    "verifier": 1.0,
+    "judge": 0.0
+  },
+  "per_variant_reward_means": {
+    "clean_correct": {
+      "verifier_reward_mean": 1.0,
+      "rlaif_group_reward_mean": 0.49375
+    },
+    "corrupt_reasoning_correct_final": {
+      "verifier_reward_mean": 1.0,
+      "rlaif_group_reward_mean": 0.5
+    },
+    "good_reasoning_wrong_final": {
+      "verifier_reward_mean": 0.0,
+      "rlaif_group_reward_mean": 0.475
+    },
+    "persuasive_filler_correct": {
+      "verifier_reward_mean": 1.0,
+      "rlaif_group_reward_mean": 0.5875
+    },
+    "gold_distractor_wrong_final": {
+      "verifier_reward_mean": 0.0,
+      "rlaif_group_reward_mean": 0.44375
+    }
+  },
+  "verifier_vs_expected_exact_reward_mismatches": 0
+}
